@@ -2,6 +2,15 @@
   "name": "linkedin-profile-viewer",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "setup:mac": "mkdir -p user-data-dir && cp -r \"$HOME/Library/Application Support/Google/Chrome/Default\" ./user-data-dir",
+    "setup:windows": "mkdir user-data-dir && xcopy \"%LOCALAPPDATA%\\Google\\Chrome\\User Data\\Default\" \"user-data-dir\" /E /I /H",
+    "setup:linux": "mkdir -p user-data-dir && cp -r ~/.config/google-chrome/Default ./user-data-dir",
+    "clean": "rm -rf user-data-dir",
+    "reinstall": "rm -rf node_modules && bun install",
+    "update": "bun update"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "playwright": "^1.49.0"
